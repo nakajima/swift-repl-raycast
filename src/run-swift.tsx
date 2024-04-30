@@ -14,7 +14,8 @@ export default function Command() {
   const [runningCode, setRunningCode] = useState<string | undefined>();
   const [pendingCode, setPendingCode] = useState<string | undefined>();
 
-  const { isLoading, data, revalidate } = useExec<Result, undefined>("swift", {
+  // @ts-expect-error This works
+  const { isLoading, data } = useExec<Result, undefined>("swift", {
     execute: !!runningCode?.trim(),
     input: runningCode,
     parseOutput: ({ stdout, stderr }) => {
